@@ -1,11 +1,11 @@
 (function($) {
-    
+
   'use strict';
 
 
   /**
    * =====================================
-   * Function for windows height and width      
+   * Function for windows height and width
    * =====================================
    */
   function windowSize( el ) {
@@ -15,13 +15,13 @@
     if("width" == el)
       result = window.innerWidth ? window.innerWidth : $(window).width();
 
-    return result; 
+    return result;
   }
 
 
   /**
    * =====================================
-   * Function for email address validation         
+   * Function for email address validation
    * =====================================
    */
   function isValidEmail(emailAddress) {
@@ -51,7 +51,7 @@
       });
 
       var top     = Math.max( (windowHeight / 2) - ( paddingSection.height() / 2), 0),
-          PTop    = 0, 
+          PTop    = 0,
           PBottom = 0;
 
       if(top == Math.round(top)) {
@@ -85,7 +85,7 @@
 
   /**
    * =====================================
-   * Function for windows height and width      
+   * Function for windows height and width
    * =====================================
    */
   function deviceControll() {
@@ -261,7 +261,7 @@
         actionId.fadeIn(10);
         thisSection.addClass('nav-visible')
         actionId.addClass('show-nav');
-        
+
       }
     });
 
@@ -302,7 +302,7 @@
 
     /**
      * =============================================
-     * Services Detail Show 
+     * Services Detail Show
      * =============================================
      */
     $('.services-full-view').find('.services-details').fadeOut(10);
@@ -381,104 +381,103 @@
 
 
 
-    /**
-     * =============================================
-     * Project Slider and Project Detail Show Button
-     * =============================================
-     */
-    var sliderButton      = $('.btn-slider, .btn-project-detail');
-    sliderButton.on('click', function(el) {
-      el.preventDefault();
+        /**
+         * =============================================
+         * Project Slider and Project Detail Show Button
+         * =============================================
+         */
+        var sliderButton      = $('.btn-slider, .btn-project-detail');
+        sliderButton.on('click', function(el) {
+          el.preventDefault();
 
-      var mainSectionId   = $( $(this).closest('.porifolio-section') ),
-          dataElement     = $(this).attr('data-element'),
-          dataHeading     = '.each-portfolio-heading',
-          sliderId        = mainSectionId.find('.slider'),
-          projectDetailId = mainSectionId.find('.project-detail'),
-          imageId         = mainSectionId.find('.image');
+          var mainSectionId   = $( $(this).closest('.porifolio-section') ),
+              dataElement     = $(this).attr('data-element'),
+              dataHeading     = '.each-portfolio-heading',
+              sliderId        = mainSectionId.find('.slider'),
+              projectDetailId = mainSectionId.find('.project-detail'),
+              imageId         = mainSectionId.find('.image');
 
-      mainSectionId.find( dataHeading ).addClass('no-heading');
+          mainSectionId.find( dataHeading ).addClass('no-heading');
 
-      setTimeout(function() {
+          setTimeout(function() {
 
-        if( dataElement === 'slider' ){
-          sliderId.fadeIn(100);
-          sliderId.closest('.slider-outer').css( 'z-index', 111 );
-          sliderId.addClass('active-section');
-        }else if( dataElement === 'project-detail' ){
-          projectDetailId.fadeIn(100);
-          projectDetailId.closest('.project-detail-outer').css( 'z-index', 111 );
-          projectDetailId.addClass('active-section');
-        }
+            if( dataElement === 'slider' ){
+              sliderId.fadeIn(100);
+              sliderId.closest('.slider-outer').css( 'z-index', 111 );
+              sliderId.addClass('active-section');
+            }else if( dataElement === 'project-detail' ){
+              projectDetailId.fadeIn(100);
+              projectDetailId.closest('.project-detail-outer').css( 'z-index', 111 );
+              projectDetailId.addClass('active-section');
+            }
 
-      }, 600 );
+          }, 600 );
 
-      imageId.fadeOut(600);
-    });
-
-
-
-    /**
-     * =============================================
-     * Project Slider and Project Detail Back Button
-     * =============================================
-     */
-    var sliderBackButton = $('.btn-slider-back, btn-project-detail-back');
-    sliderBackButton.on('click', function(el) {
-      el.preventDefault();
-
-      var mainSectionId   = $( $(this).closest('.porifolio-section') ),
-          dataHeading     = '.each-portfolio-heading',
-          sliderId        = mainSectionId.find('.slider'),
-          projectDetailId = mainSectionId.find('.project-detail'),
-          imageId         = mainSectionId.find('.image');
-
-      sliderId.removeClass('active-section');
-      projectDetailId.removeClass('active-section');
-      
-      setTimeout(function() {
-        imageId.fadeIn(600);
-        sliderId.fadeOut(100);
-        projectDetailId.fadeOut(100);
-        mainSectionId.find( dataHeading ).removeClass('no-heading');
-        sliderId.closest('.slider-outer').css( 'z-index', -111 );
-        projectDetailId.closest('.project-detail-outer').css( 'z-index', -111 );
-      }, 200 );
-
-      
-    });
+          imageId.fadeOut(600);
+        });
 
 
 
+        /**
+         * =============================================
+         * Project Slider and Project Detail Back Button
+         * =============================================
+         */
+        var sliderBackButton = $('.btn-slider-back, btn-project-detail-back');
+        sliderBackButton.on('click', function(el) {
+          el.preventDefault();
 
-    /**
-     * =======================================
-     * Portfolio Wrapper Slider
-     * =======================================
-     */
-    var portfolioWrapper = $(".portfolio-wrapper"); // client's message
-    portfolioWrapper.owlCarousel({
-      singleItem :        true,
-      slideSpeed :        500,
-      paginationSpeed :   500,
-      autoHeight :        false,
-      navigation:         false,
-      pagination:         true,
-      // afterAction : syncPosition,
-      // autoHeight : true,
-      afterAction: function(el){
-        //remove class active
-        this
-        .$owlItems
-        .removeClass('active');
+          var mainSectionId   = $( $(this).closest('.porifolio-section') ),
+              dataHeading     = '.each-portfolio-heading',
+              sliderId        = mainSectionId.find('.slider'),
+              projectDetailId = mainSectionId.find('.project-detail'),
+              imageId         = mainSectionId.find('.image');
 
-        //add class active
-        this
-        .$owlItems //owl internal $ object containing items
-        .eq(this.currentItem)
-        .addClass('active');
-     }
-    });
+          sliderId.removeClass('active-section');
+          projectDetailId.removeClass('active-section');
+
+          setTimeout(function() {
+            imageId.fadeIn(600);
+            sliderId.fadeOut(100);
+            projectDetailId.fadeOut(100);
+            mainSectionId.find( dataHeading ).removeClass('no-heading');
+            sliderId.closest('.slider-outer').css( 'z-index', -111 );
+            projectDetailId.closest('.project-detail-outer').css( 'z-index', -111 );
+          }, 200 );
+
+
+        });
+
+
+
+        /**
+         * =======================================
+         * Portfolio Wrapper Slider
+         * =======================================
+         */
+        var portfolioWrapper = $(".portfolio-wrapper"); // client's message
+        portfolioWrapper.owlCarousel({
+          singleItem :        true,
+          slideSpeed :        500,
+          paginationSpeed :   500,
+          autoHeight :        false,
+          navigation:         false,
+          pagination:         true,
+          // afterAction : syncPosition,
+          // autoHeight : true,
+          afterAction: function(el){
+            //remove class active
+            this
+            .$owlItems
+            .removeClass('active');
+
+            //add class active
+            this
+            .$owlItems //owl internal $ object containing items
+            .eq(this.currentItem)
+            .addClass('active');
+         }
+        });
 
 
 
@@ -613,5 +612,3 @@
 
 
 } (jQuery) );
-
-
